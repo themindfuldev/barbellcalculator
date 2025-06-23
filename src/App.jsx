@@ -172,8 +172,47 @@ const App = () => {
           Barbell Plate Calculator
         </h1>
 
-        {/* Fixed Inputs Section */}
+        {/* Variable Input Section */}
         <div className="mb-8 p-6 bg-gray-700 rounded-lg shadow-inner border border-gray-600">
+          <h2 className="text-2xl font-bold text-indigo-300 mb-4">Variable Input</h2>
+          <div className="mb-4">
+            <label htmlFor="targetWeight" className="block text-gray-300 text-sm font-medium mb-2">
+              Target Weight ({unit}):
+            </label>
+
+            <input
+              id="targetWeight"
+              className="w-full p-3 bg-gray-600 border border-gray-500 rounded-md text-gray-100 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
+              value={targetWeight}
+              onChange={(e) => setTargetWeight(parseFloat(e.target.value) || 0)}
+            />
+          </div>
+        </div>
+
+        {/* Calculate Button */}
+        <button
+          onClick={calculatePlates}
+          className="w-full p-4 bg-green-600 hover:bg-green-700 text-white font-extrabold text-xl rounded-lg shadow-xl transform hover:scale-105 transition duration-300 ease-in-out flex items-center justify-center space-x-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clipRule="evenodd" />
+          </svg>
+          <span>Calculate Plates</span>
+        </button>
+
+        {/* Calculation Result */}
+        {calculationResult && (
+          <div className="mt-8 p-6 bg-gray-700 rounded-lg shadow-inner border border-gray-600">
+            <h2 className="text-2xl font-bold text-indigo-300 mb-4">Result</h2>
+            <div
+              className="text-gray-200 leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: calculationResult }}
+            ></div>
+          </div>
+        )}
+
+        {/* Fixed Inputs Section */}
+        <div className="mt-8 p-6 bg-gray-700 rounded-lg shadow-inner border border-gray-600">
           <h2 className="text-2xl font-bold text-indigo-300 mb-4">Fixed Inputs</h2>
 
           {/* Unit Selection */}
@@ -256,45 +295,6 @@ const App = () => {
             <div className="space-y-3 mt-2"><b>Maximum load:</b> {maxLoad} ({unit})</div>
           </div>
         </div>
-
-        {/* Variable Input Section */}
-        <div className="mb-8 p-6 bg-gray-700 rounded-lg shadow-inner border border-gray-600">
-          <h2 className="text-2xl font-bold text-indigo-300 mb-4">Variable Input</h2>
-          <div className="mb-4">
-            <label htmlFor="targetWeight" className="block text-gray-300 text-sm font-medium mb-2">
-              Target Weight ({unit}):
-            </label>
-
-            <input
-              id="targetWeight"
-              className="w-full p-3 bg-gray-600 border border-gray-500 rounded-md text-gray-100 focus:ring-indigo-500 focus:border-indigo-500 transition duration-200"
-              value={targetWeight}
-              onChange={(e) => setTargetWeight(parseFloat(e.target.value) || 0)}
-            />
-          </div>
-        </div>
-
-        {/* Calculate Button */}
-        <button
-          onClick={calculatePlates}
-          className="w-full p-4 bg-green-600 hover:bg-green-700 text-white font-extrabold text-xl rounded-lg shadow-xl transform hover:scale-105 transition duration-300 ease-in-out flex items-center justify-center space-x-2"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clipRule="evenodd" />
-          </svg>
-          <span>Calculate Plates</span>
-        </button>
-
-        {/* Calculation Result */}
-        {calculationResult && (
-          <div className="mt-8 p-6 bg-gray-700 rounded-lg shadow-inner border border-gray-600">
-            <h2 className="text-2xl font-bold text-indigo-300 mb-4">Result</h2>
-            <div
-              className="text-gray-200 leading-relaxed"
-              dangerouslySetInnerHTML={{ __html: calculationResult }}
-            ></div>
-          </div>
-        )}
       </div>
     </div>
   );
