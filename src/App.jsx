@@ -8,7 +8,7 @@ const App = () => {
   const [barbellWeight, setBarbellWeight] = useState(15); // Default to 20kg
   // State for the available plates, initialized with common kg plates
   const [availablePlates, setAvailablePlates] = useState([
-    { id: 1, weight: 25, count: 0 },
+    { id: 1, weight: 25, count: 2 },
     { id: 2, weight: 20, count: 4 },
     { id: 3, weight: 15, count: 2 },
     { id: 4, weight: 10, count: 4 },
@@ -40,7 +40,7 @@ const App = () => {
   useEffect(() => {
     if (unit === 'kg') {
       setAvailablePlates([
-        { id: 1, weight: 25, count: 0 },
+        { id: 1, weight: 25, count: 2 },
         { id: 2, weight: 20, count: 4 },
         { id: 3, weight: 15, count: 2 },
         { id: 4, weight: 10, count: 4 },
